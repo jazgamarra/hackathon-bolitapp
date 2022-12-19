@@ -8,12 +8,21 @@ app = Flask(__name__)
 def pagina_principal():
     return render_template('index.html')
 
+@app.route("/balance")
+def balance():
+    return render_template('balance.html')
 
-@app.route("/calculadora")
-def calculadora():
-    return render_template('Calculadora.html')
+@app.route("/ingresar_datos")
+def ingresar_datos():
+    return render_template('balance.html')
 
+@app.route("/aprender")
+def aprender():
+    return render_template('balance.html')
 
+@app.route("/login_page")
+def login_page():
+    return render_template('loginpage.html')
 
 
 if __name__ == "__main__":
