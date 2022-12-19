@@ -9,30 +9,33 @@
       <div
         class="bg-white px-6 py-8 rounded shadow-md text-orange-700 w-full bg-yellow-50"
       >
-        <h1 class="mb-8 text-3xl text-center">INGRESAR DATOS</h1>
-        <select class="text-black block border w-full p-3 rounded-full mb-4">
+        <h1 class="mb-8 text-3xl text-center font-bold">INGRESAR DATOS</h1>
+        <select
+          class="text-black block border w-full p-3 rounded-full mb-4 bg-white"
+        >
           <option>INGRESOS</option>
           <option>GASTOS</option>
         </select>
-
+        <p class="font-bold ml-4">Monto:</p>
         <input
           type="text"
           class="block border border-grey-light w-full p-3 rounded-full mb-4"
           name="email"
-          placeholder="Monto en guaranies"
+          placeholder="Ej: 100000 Gs"
         />
+        <p class="font-bold ml-4">Categoria:</p>
+        <select
+          class="text-black block border w-full p-3 rounded-full mb-4 bg-white"
+        >
+          <option>Comida</option>
+          <option>Gastos fijos</option>
+        </select>
 
-        <input
-          type="password"
-          class="block border border-grey-light w-full p-3 rounded-full mb-4"
-          name="password"
-          placeholder=""
-        />
         <button
           type="submit"
-          class="w-full text-center py-3 rounded-full text-white my-1 bg-orange-700 hover:bg-orange-500 active:bg-orange-600"
+          class="w-full text-center font-bold uppercase py-3 rounded-full text-white my-1 bg-orange-700 hover:bg-orange-500 active:bg-orange-600"
         >
-          Crear
+          Guardar
         </button>
       </div>
     </div>
