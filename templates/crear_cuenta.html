@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Inicio</title>
+  </head>
+  <body>
+    {% include 'partials/header2.html' %}
+    <div class="bg-grey-lighter min-h-screen flex flex-col bg-amber-100">
+      <div
+        class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2"
+      >
+        <div
+          class="bg-white px-6 py-8 rounded shadow-md text-orange-700 w-full bg-yellow-50"
+        >
+          <h1 class="mb-8 text-3xl text-center">Crear cuenta</h1>
+          <input
+            type="text"
+            class="block border border-grey-light w-full p-3 rounded-full mb-4"
+            name="fullname"
+            placeholder="Nombre"
+          />
+
+          <input
+            type="text"
+            class="block border border-grey-light w-full p-3 rounded-full mb-4"
+            name="email"
+            placeholder="telefono"
+          />
+
+          <input
+            type="password"
+            class="block border border-grey-light w-full p-3 rounded-full mb-4"
+            name="password"
+            placeholder="contraseña"
+          />
+          <input
+            type="password"
+            class="block border border-grey-light w-full p-3 rounded-full mb-4"
+            name="confirm_password"
+            placeholder="Confirmar contraseña"
+          />
+
+          <button
+            type="submit"
+            class="w-full text-center py-3 rounded-full text-white my-1 bg-orange-700 hover:bg-orange-500 active:bg-orange-600"
+          >
+            Crear
+          </button>
+
+          <div class="text-center text-sm text-grey-dark mt-4">
+            2022 tatu bolita app todos los derechos reservados por: que mira
+            bobo, anda pa sha.
+            <a
+              class="no-underline border-b border-grey-dark text-grey-dark"
+              href="#"
+            >
+            </a>
+            <a
+              class="no-underline border-b border-grey-dark text-grey-dark"
+              href="#"
+            >
+            </a>
+          </div>
+        </div>
+
+        <div class="text-grey-dark mt-6">
+          Ya tienes una cuenta?
+          <a
+            class="no-underline border-b hover:text-orange-600"
+            href="/login_page"
+          >
+            ingresar </a
+          >.
+        </div>
+      </div>
+    </div>
+
+    {% include 'partials/footer.html' %}
+  </body>
+</html>

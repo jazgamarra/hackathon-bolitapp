@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def pagina_principal():
-    return render_template('index.html')
+    return render_template('inicio.html')
 
 @app.route("/balance")
 def balance():
@@ -14,7 +14,7 @@ def balance():
 
 @app.route("/ingresar_datos")
 def ingresar_datos():
-    return render_template('balance.html')
+    return render_template('ingreso_datos.html')
 
 @app.route("/aprender")
 def aprender():
@@ -22,8 +22,19 @@ def aprender():
 
 @app.route("/login_page")
 def login_page():
-    return render_template('loginpage.html')
+    return render_template('index.html')
 
+@app.route("/crear_cuenta")
+def sign_up():
+    return render_template('crear_cuenta.html')
+
+@app.route("/inicio")
+def inicio():
+    return render_template('inicio.html')
+
+@app.route("/quienes_somos")
+def quienes_somos():
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug = True)
