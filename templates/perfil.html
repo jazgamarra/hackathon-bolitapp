@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+<!-- comando de flask -->
+{% block title %} Perfil {% endblock %} {% block content %}
+<body>
+  <div class="h-full bg-amber-100 w-full flex justify-between">
+    <!--Left Col-->
+    <div
+      class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start ml-20 overflow-y-hidden"
+    >
+      <h1
+        class="my-4 text-3xl md:text-5xl text-white font-bold leading-tight text-center md:text-left"
+      >
+        <span class="text-orange-700"> Dilo el Armadillo </span>
+      </h1>
+      <p class="leading-normal text-2xl">
+        <span class="font-bold text-orange-700">Nro Cel:</span> 0971123456
+      </p>
+      <button
+        class="bg-orange-700 rounded-full px-2 mt-4 hover:bg-orange-500 active:bg-orange-600"
+      >
+        <p class="text-white text-center px-2 py-2">Cambiar contraseña</p>
+      </button>
+    </div>
+
+    <!--Right Col-->
+    <div class="w-[600px] py-12 px-4 overflow-hidden">
+      <img
+        class="mx-auto"
+        src="https://th.bing.com/th/id/R.36667373a2e83a0902940218fe79f7ca?rik=Hz6IVpxLQcUT8g&pid=ImgRaw&r=0"
+      />
+    </div>
+
+    <div class="mx-auto md:pt-16">
+      <p class="text-blue-400 font-bold pb-8 lg:pb-6 text-center"></p>
+      <div
+        class="flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in"
+      ></div>
+    </div>
+
+    <!--Footer-->
+  </div>
+
+  {% endblock %}
+</body>
