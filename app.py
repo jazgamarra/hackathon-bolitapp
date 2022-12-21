@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
@@ -146,8 +148,11 @@ def pagina_principal():
         nombre = None
         telefono = None
         return redirect(url_for('login'))
-    print('argumentos de la pagina son', nombre, telefono)
-    print('el saldo es ', calcular_saldo(telefono))
+    print('Los argumentos de la pagina son', nombre, telefono)
+    print('El saldo es ', calcular_saldo(telefono))
+
+    generar_grafico(telefono)
+
     return render_template('pagina_principal.html', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono))
 
 @app.route("/")
@@ -160,8 +165,6 @@ def balance():
     telefono = args['telefono']
 
     transacciones =  db.session.query(Transactions).filter_by(telefono=telefono).all()
-    print(transacciones)
-
     lista_de_transacciones = [] 
     saldo = 0
 
@@ -174,13 +177,12 @@ def balance():
         else: 
             saldo -= transaccion['monto']
             lista_de_transacciones.append(['', transaccion['monto'], saldo, 'Hubo un egreso ;(']) 
-        
+    print(generar_porcentajes(telefono))
     return render_template('balance.html', telefono=telefono, lista_de_transacciones=lista_de_transacciones)  
 
 @app.route("/aprender")
 def aprender():
     return render_template('aprender.html')
-
 
 @app.route("/inicio")
 def inicio():
@@ -198,8 +200,67 @@ def perfil():
 def galeria():
     return render_template('galeria.html')
 
+def generar_porcentajes(telefono): 
+    transacciones = db.session.query(Transactions).filter_by(telefono=telefono).filter_by(transaccion='egreso').all()
+    sumatorias = [0,0,0,0,0,0]
+    egreso_total = 0
+    # Recorremos las transacciones para calcular las sumatorias 
+    for transaccion in transacciones:
+        transaccion = transaccion.__dict__
+        egreso_total += transaccion['monto'] 
+
+        # Recorremos las categorias validas buscando la posicion a la que corresponde 
+        for i in range(len(categorias_validas_egreso)): 
+            if categorias_validas_egreso[i] == transaccion['categoria']:
+                sumatorias[i] += transaccion['monto']
+                break 
+        # Calculamos los porcentajes
+        for i in range(len(sumatorias)):
+            sumatorias[i] = (sumatorias[i] / egreso_total) * 100 
+
+    return (sumatorias)
+
+# probando@dani-datos.iam.gserviceaccount.com
+def generar_grafico(telefono):
+    SERVICE_ACCOUNT_FILE = 'llave.json'
+    credentials = service_account.Credentials.from_service_account_file(
+        filename=SERVICE_ACCOUNT_FILE
+    )
+
+    service_sheets = build('sheets', 'v4', credentials=credentials)
+    GOOGLE_SHEETS_ID = '1zsCw3bD6eg77UyJUR5A1c__y81_gnkcHIP73kadxteY'
+    worksheet_name = 'tabla!'
+
+
+    global cont
+    cont = 2 
+
+    def subir_a_sheets(categoria, porcentaje):
+        global cont
+        
+        cell_range_insert = ('B' + str(cont) + ':' + 'C' + str(cont))
+
+        cont = cont + 1
+        
+        values = (
+            (categoria, porcentaje),
+        )
+        value_range_body = { 
+            'majorDimension': 'ROWS',
+            'values': values
+        }
+
+        service_sheets.spreadsheets().values().update(
+            spreadsheetId=GOOGLE_SHEETS_ID,
+            valueInputOption='USER_ENTERED',
+            range=worksheet_name + cell_range_insert,
+            body=value_range_body
+        ).execute()
+
+    porcentajes = generar_porcentajes(telefono) 
+    for i in range(len(porcentajes)):
+        subir_a_sheets(categorias_validas_egreso[i], porcentajes[i])
+
 if __name__ == "__main__":
     db.create_all()
     app.run(debug = True)
-
-
