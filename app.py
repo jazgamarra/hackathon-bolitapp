@@ -64,7 +64,7 @@ def login():
             dict_user = usuario.__dict__
             nombre = dict_user['nombre']
             pass_correcta = dict_user['password']
-            print(pass_correcta)
+            # print(pass_correcta)
             if pass_correcta == password:
                 print('Password correcta, Bienvenid@')
                 return redirect(url_for('pagina_principal', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono)))
@@ -80,8 +80,7 @@ def sign_up():
         telefono = request.form['telefono']
         password = request.form['password']
         confirma = request.form['confirmacion']
-        print("Nuevo usuario con estos datos",
-              nombre, telefono, password, confirma)
+        print("Nuevo usuario con estos datos", nombre, telefono, password, confirma)
 
         try:
             usuario_existente = db.session.execute(
@@ -118,8 +117,7 @@ def ingresar_datos():
         monto = request.form['monto']
         categoria = request.form['categoria']
 
-        print('Se recibio la transaccion de',
-              opcion, monto, categoria, telefono)
+        print('Se recibio la transaccion de', opcion, monto, categoria, telefono)
 
         # Realizamos las operaciones necesarias segun sea ingreso o egreso
         if (opcion == 'ingreso') and (categoria in categorias_validas_ingreso):
@@ -144,7 +142,7 @@ def pagina_principal():
         nombre = args['nombre']
         telefono = args['telefono']
     except:
-        print('no iniciaste sesion')
+        print('No iniciaste sesion')
         nombre = None
         telefono = None
         return redirect(url_for('login'))
@@ -152,7 +150,6 @@ def pagina_principal():
     print('el saldo es ', calcular_saldo(telefono))
     return render_template('pagina_principal.html', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono))
 
-######################################################################################################
 @app.route("/")
 def index():
     return render_template('inicio.html')
