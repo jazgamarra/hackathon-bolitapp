@@ -1,46 +1,39 @@
 <header>
   <nav class="bg-amber-700 px-4 lg:px-6 py-2.5">
     <div class="flex flex-wrap items-center mx-auto max-w-screen-xl">
-      <a href="{{url_for('balance', nombre=nombre, telefono=telefono,saldo=saldo) }}" class="flex items-center">
+      <a href="/" class="flex items-center">
         <img
           src="https://cdn-icons-png.flaticon.com/512/6469/6469088.png"
-          class="mr-3 h-12 sm:h-9"
+          class="mr-3 h-6 sm:h-9"
           alt="Flowbite Logo"
         />
         <span class="self-center text-xl font-semibold text-white"
-          >Tatu Bolita App</span
+          >BolitApp</span
         >
       </a>
       <div class="flex flex-1 items-center lg:order-2 justify-between">
-        <div class="justify-right ml-20">
-          <a
-            href="{{url_for('perfil')}}"
-            class="text-white hover:bg-amber-500 active:bg-amber-600 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
-            aria-current="page"
-            >PERFIL</a
-          >
-          <a
-            href="{{url_for('balance', telefono=request.args['telefono'])}}"
-            class="text-white hover:bg-amber-500 active:bg-amber-600 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
-            >BALANCE</a
-          >
-          <a
-            href="/ingresar_datos"
-            class="text-white hover:bg-amber-500 active:bg-amber-600 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
-            >INGRESAR DATOS</a
-          >
-          <a
-            href="/aprender"
-            class="text-white hover:bg-amber-500 active:bg-amber-600 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
-            >APRENDER</a
-          >
+        <div class="flex">
+          <div class="justify-right ml-20">
+            <a
+              href="/quienes_somos"
+              class="text-white hover:bg-amber-500 active:bg-amber-600 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
+              >¿Quienes somos?</a
+            >
+          </div>
+          <div class="justify-right">
+            <a
+              href="/galeria"
+              class="text-white hover:bg-amber-500 active:bg-amber-600 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
+              >Galería</a
+            >
+          </div>
         </div>
         <div class="">
           <div class="inline-block relative w-64">
             <select
               class="text-white text-center text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 appearance-none bg-amber-600 hover:bg-amber-500 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
             >
-              <option>Espanhol</option>
+              <option>Español</option>
               <option>Enlhet</option>
             </select>
             <div
@@ -59,6 +52,8 @@
             >
           </div>
         </div>
+      </div>
+
       </div>
     </div>
   </nav>
