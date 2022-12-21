@@ -194,6 +194,10 @@ def quienes_somos():
 def perfil():
     return render_template('perfil.html')
 
+@app.route("/galeria")
+def galeria():
+    return render_template('galeria.html')
+
 if __name__ == "__main__":
     app.run(debug = True)
 
