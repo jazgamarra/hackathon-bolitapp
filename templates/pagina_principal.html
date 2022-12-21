@@ -1,16 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends 'base.html' %}
+<!-- comando de flask -->
+{% block title %} Perfil {% endblock %} {% block content %}
 <body>
-    <h1>Bienvenido {{nombre}} {{telefono}}<br>
-        Tu saldo es {{saldo}}
-    </h1>
-
-    <a href="{{url_for('ingresar_datos', nombre=nombre, telefono=telefono,saldo=saldo) }}">Ingrese Datos</a>
+  <div class="flex bg-amber-50 items-center justify-center">
+    <div class="flex-col flex">
+      <div class="ml-8 mt-8">
+        <div class="bg-amber-100 p-6 rounded drop-shadow-md w-fit">
+          <h1 class="text-4xl uppercase font-bold opacity-75">
+            <span class="font-bold text-orange-700 mr-2 text-4xl"
+              >Bienvenido
+            </span>
+            {{nombre}} !<br />
+          </h1>
+          <h1 class="text-2xl font-bold opacity-75">
+            <span class="font-bold text-orange-700 mr-2 text-2xl">Nro Cel:</span
+            >{{telefono}}
+          </h1>
+          <h1 class="text-2xl font-bold opacity-75">
+            <span class="font-bold text-orange-700 mr-2 text-2xl"
+              >Tu saldo es </span
+            >{{saldo}} Gs
+          </h1>
+        </div>
+      </div>
+      <div class="flex ml-8 mt-2 mb-8">
+        <button
+          class="bg-orange-700 rounded-full px-2 mt-4 hover:bg-orange-500 active:bg-orange-600 drop-shadow-md"
+        >
+          <p class="text-white text-center px-2 py-2">Cambiar contraseña</p>
+        </button>
+        <div class="ml-2">
+          <button
+            class="bg-orange-700 rounded-full px-2 py-2 mt-4 hover:bg-orange-500 active:bg-orange-600 drop-shadow-md"
+          >
+            <a
+              class="text-white text-center px-2 py-2"
+              href="{{url_for('ingresar_datos', nombre=nombre, telefono=telefono,saldo=saldo) }}"
+              >Ingresar Datos</a
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="m-8">
+      <div class="w-auto h-auto bg-white rounded drop-shadow-md">
+        <p class="p-4 m-4">
+          Este es un super consejo para que administres tu platita uwu
+        </p>
+        <div class="w-40">
+          <img
+            src="https://media.discordapp.net/attachments/1053685100845465662/1055140962181070910/bolita-consejera.png?width=491&height=400"
+            alt="armadillo acostadito"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
 </body>
-</html>
