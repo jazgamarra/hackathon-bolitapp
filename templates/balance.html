@@ -1,6 +1,54 @@
 {% extends 'base.html' %} <!-- comando de flask -->
 {% block title %} Calculadora {% endblock %}
 {% block content %}<!-- comando de flask -->
-<h1>Soy la pagina Calculadora</h1>
+
+<div class="flex justify-center p-10">
+<div class="overflow-x-auto relative w-1/2 ">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-white uppercase bg-amber-700">
+            <tr>
+                
+                <th scope="col" class="py-3 px-6">
+                    Ingreso
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Egreso
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Saldo 
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Mensaje 
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaccion in lista_de_transacciones %}
+
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="py-4 px-6">
+                    {{transaccion[0]}} 
+                </td>
+                <td class="py-4 px-6">
+                    {{transaccion[1]}} 
+
+                </td>
+                <td class="py-4 px-6">
+                    {{transaccion[2]}} 
+                    
+                </td>
+                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{transaccion[3]}} 
+
+                </th>
+            </tr>
+{%endfor%} 
+
+        </tbody>
+    </table>
+</div>
+</div>
+
+
 
 {% endblock %}<!-- comandos de flask -->

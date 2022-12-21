@@ -67,10 +67,10 @@
                   <p class="text-center font-semibold mx-4 mb-0">BIENVENIDO</p>
                 </div>
       
-                <a
-                  class="px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded rounded-full shadow-md hover:bg-orange-500 active:bg-orange-600 focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3 bg-orange-700"
+                <!--  BOTON DE INGRESAR  -->
+                <a class="px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded rounded-full shadow-md hover:bg-orange-500 active:bg-orange-600 focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3 bg-orange-700"
                   
-                  href="/login_page"
+                  href="{{url_for('login')}}"
                   role="button"
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"
@@ -80,19 +80,18 @@
                       d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
                     /></svg>ingresar
                 </a>
-                <a
-                  class="px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded rounded-full shadow-md hover:bg-orange-500 active:bg-orange-600 focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3 bg-orange-700"
+                <!--  BOTON DE CREAR CUENTA  -->
+                <a class="px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded rounded-full shadow-md hover:bg-orange-500 active:bg-orange-600 focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3 bg-orange-700"
                   
-                  href="/crear_cuenta"
+                  href="{{url_for('sign_up')}}"
                   role="button"
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="light"
                 >
                     <path
                       fill="currentColor"
-                   
-                    /></svg>Crear cuenta
-        
+                      d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                    /></svg>crear cuenta
                 </a>
               </form>
             </div>
