@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Elana</title>
+  </head>
+  <body>
+    {% include 'partials/header2.html' %}
+    <section class="h-screen">
+        <div class=" h-full bg-amber-100 ">
+          <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
+            <div class="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/6469/6469088.png"
+                class="w-[650px]"
+                alt="Phone image"
+              />
+            </div>
+            <div>
+                <h2></h2>
+            </div>
+            <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
+              <form>
+                <!-- Email input -->
+                <div class="mb-6">
+                
+                    
+                    
+                 
+                </div>
+      
+                <!-- Password input -->
+                <div class="mb-6">
+                 
+                    
+                 
+                </div>
+      
+                <div class="flex justify-between items-center mb-6">
+                  <div class="form-group form-check">
+                   
+                     
+                     
+                    
+                   
+                   
+                  </div>
+                  <a
+                  
+                  >
+                </div>
+      
+                <!-- Submit button -->
+                <button
+                  type="submit"
+               
+                >
+                 
+                </button>
+      
+                <div
+                  class="flex  items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"
+                >
+                  <p class="text-center font-semibold mx-4 mb-0">AYETSOVASCLHEP APTALHNA</p> <!-- Bienvenidos -->
+                </div>
+      
+                <!--  BOTON DE INGRESAR  -->
+                <a class="px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded rounded-full shadow-md hover:bg-orange-500 active:bg-orange-600 focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3 bg-orange-700"
+                  
+                  href="{{url_for('login')}}"
+                  role="button"
+                  data-mdb-ripple="true"
+                  data-mdb-ripple-color="light"
+                >
+                    <path
+                      fill="currentColor"
+                      d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                    /></svg>ETELH <!-- ingresar -->
+                </a>
+                <!--  BOTON DE CREAR CUENTA  -->
+                <a class="px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded rounded-full shadow-md hover:bg-orange-500 active:bg-orange-600 focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3 bg-orange-700"
+                  
+                  href="{{url_for('sign_up')}}"
+                  role="button"
+                  data-mdb-ripple="true"
+                  data-mdb-ripple-color="light"
+                >
+                    <path
+                      class="uppercase"
+                      fill="currentColor"
+                      d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+                    /></svg>Elana cuenta pac
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    {% include 'partials/footer.html' %}
+  </body>
+</html>
