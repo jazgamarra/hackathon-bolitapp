@@ -17,43 +17,49 @@
           class="bg-white px-6 py-8 rounded shadow-md text-orange-700 w-full bg-yellow-50"
         >
           <h1 class="mb-8 text-3xl text-center">Elana cuenta pac</h1>
-        <form action="" method="post">
-          <input
-            type="text"
-            class="block border border-grey-light w-full p-3 rounded-full mb-4"
-            name="nombre" id="nombre"
-            placeholder="Apuesey"
-          />
+          <!-- Crear cuenta -->
+          <form action="" method="post">
+            <input
+              type="text"
+              class="block border border-grey-light w-full p-3 rounded-full mb-4"
+              name="nombre"
+              id="nombre"
+              placeholder="Apuesey"
+            />
 
-          <input
-            type="text"
-            class="block border border-grey-light w-full p-3 rounded-full mb-4"
-            name="telefono" id="telefono"
-            placeholder="telefono"
-          />
+            <input
+              type="text"
+              class="block border border-grey-light w-full p-3 rounded-full mb-4"
+              name="telefono"
+              id="telefono"
+              placeholder="telefono"
+            />
 
-          <input
-            type="password"
-            class="block border border-grey-light w-full p-3 rounded-full mb-4"
-            name="password" id="password"
-            placeholder="nemposcama"
-          />
-          <input
-            type="password"
-            class="block border border-grey-light w-full p-3 rounded-full mb-4"
-            name="confirmacion" id="confirmacion"
-            placeholder="Acyaseng nemposcama"
-          />
+            <input
+              type="password"
+              class="block border border-grey-light w-full p-3 rounded-full mb-4"
+              name="password"
+              id="password"
+              placeholder="nemposcama"
+            />
+            <input
+              type="password"
+              class="block border border-grey-light w-full p-3 rounded-full mb-4"
+              name="confirmacion"
+              id="confirmacion"
+              placeholder="Acyaseng nemposcama"
+            />
 
-          <button
-            type="submit"
-            class="w-full text-center py-3 rounded-full text-white my-1 bg-orange-700 hover:bg-orange-500 active:bg-orange-600"
-          >
-            Elana
-          </button>
-        </form>
+            <button
+              type="submit"
+              class="w-full text-center py-3 rounded-full text-white my-1 bg-orange-700 hover:bg-orange-500 active:bg-orange-600"
+            >
+              Elana
+              <!-- crear -->
+            </button>
+          </form>
           <div class="text-center text-sm text-grey-dark mt-4">
-            2022 tatu bolita app todos los derechos reservados. 
+            2022 bolitapp todos los derechos reservados.
             <a
               class="no-underline border-b border-grey-dark text-grey-dark"
               href="#"
@@ -68,7 +74,7 @@
         </div>
 
         <div class="text-grey-dark mt-6">
-          Elana yauaclho?
+          Elana yauaclho?<!-- ya tenes cuenta? -->
           <a
             class="no-underline border-b hover:text-orange-600"
             href="{{url_for('login')}}"
