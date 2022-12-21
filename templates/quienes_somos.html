@@ -6,8 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Quienes somos</title>
-  {% include 'partials/header2.html' %}
+ 
   <body>
+    <header>
+      <nav class="bg-amber-700 px-4 lg:px-6 py-2.5">
+        <div class="flex flex-wrap items-center mx-auto max-w-screen-xl">
+          <a href="/" class="flex items-center">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/6469/6469088.png"
+              class="mr-3 h-6 sm:h-9"
+              alt="Flowbite Logo"
+            />
+            <span class="self-center text-xl font-semibold text-white"
+              >BolitApp</span
+            >
+          </a>
+          <div class="flex flex-1 items-center lg:order-2 justify-between">
+            <div class="flex">
+              <div class="justify-right ml-20">
+                <a
+                  href="{{url_for('pagina_principal', nombre=request.args['nombre'], telefono=request.args['telefono'],saldo=request.args['saldo']) }}"
+                  class="text-white hover:bg-amber-500 active:bg-amber-600 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
+                  >Perfil</a
+                >
+              </div>
+              <div class="justify-right">
+                <a
+                  href="{{url_for('balance',  nombre=request.args['nombre'], telefono=request.args['telefono'],saldo=request.args['saldo'])}}"
+                  class="text-white hover:bg-amber-500 active:bg-amber-600 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
+                  >Balance</a
+                >
+              </div>
+              <div class="justify-right">
+                <a
+                  href="{{url_for('ingresar_datos', nombre=request.args['nombre'], telefono=request.args['telefono'],saldo=request.args['saldo']) }}"
+                  class="text-white hover:bg-amber-500 active:bg-amber-600 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
+                  >Ingresar datos</a
+                >
+              </div>
+              <div class="justify-right">
+                <a
+                  href="{{url_for('aprender', nombre=request.args['nombre'], telefono=request.args['telefono'],saldo=request.args['saldo']) }}"
+                  class="text-white hover:bg-amber-500 active:bg-amber-600 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
+                  >Aprender</a
+                >
+              </div>
+            </div>
+            <div class="">
+              <div class="inline-block relative w-64">
+                <select
+                  class="text-white text-center text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 appearance-none bg-amber-600 hover:bg-amber-500 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                >
+                <option><a href="{{url_for('Quienes_Somos_Idioma_2')}}"> Espanhol</a></option>
+                <option><a href="{{url_for('quienes_somos')}}"> Enlhet</a></option>
+                </select>
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                >
+                  <svg
+                    class="fill-current h-4 w-4"
+                    xmlns=""
+                    viewBox="0 0 20 20"
+                  ></svg>
+                </div>
+                <a
+                  href="/inicio"
+                  class="text-white hover:bg-amber-500 active:bg-amber-600 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
+                  >Cerrar sesion</a
+                >
+              </div>
+            </div>
+          </div>
+    
+          </div>
+        </div>
+      </nav>
+    </header>
     <div class="h-full bg-amber-100 w-full flex justify-between">
         <!--Left Col-->
         <div
