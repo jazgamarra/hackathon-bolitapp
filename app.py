@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
+from sqlalchemy import func
+
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
@@ -201,24 +203,32 @@ def galeria():
     return render_template('galeria.html')
 
 def generar_porcentajes(telefono): 
-    transacciones = db.session.query(Transactions).filter_by(telefono=telefono).filter_by(transaccion='egreso').all()
-    sumatorias = [0,0,0,0,0,0]
-    egreso_total = 0
-    # Recorremos las transacciones para calcular las sumatorias 
-    for transaccion in transacciones:
-        transaccion = transaccion.__dict__
-        egreso_total += transaccion['monto'] 
+    egreso_total = db.session.query(func.sum(Transactions.monto)).filter_by(telefono=telefono).filter_by(transaccion='egreso').scalar() 
+    
+    egreso_supermercado = db.session.query(func.sum(Transactions.monto)).filter_by(telefono=telefono).filter_by(transaccion='egreso').filter_by(categoria='supermercado').scalar() 
 
-        # Recorremos las categorias validas buscando la posicion a la que corresponde 
-        for i in range(len(categorias_validas_egreso)): 
-            if categorias_validas_egreso[i] == transaccion['categoria']:
-                sumatorias[i] += transaccion['monto']
-                break 
-        # Calculamos los porcentajes
-        for i in range(len(sumatorias)):
-            sumatorias[i] = (sumatorias[i] / egreso_total) * 100 
+    egreso_movilidad = db.session.query(func.sum(Transactions.monto)).filter_by(telefono=telefono).filter_by(transaccion='egreso').filter_by(categoria='movilidad').scalar()
 
-    return (sumatorias)
+    egreso_entretenimiento = db.session.query(func.sum(Transactions.monto)).filter_by(telefono=telefono).filter_by(transaccion='egreso').filter_by(categoria='entretenimiento').scalar()
+
+    egreso_vivienda = db.session.query(func.sum(Transactions.monto)).filter_by(telefono=telefono).filter_by(transaccion='egreso').filter_by(categoria='vivienda').scalar()
+
+    egreso_deudas = db.session.query(func.sum(Transactions.monto)).filter_by(telefono=telefono).filter_by(transaccion='egreso').filter_by(categoria='deudas').scalar() 
+
+    egreso_servicios = db.session.query(func.sum(Transactions.monto)).filter_by(telefono=telefono).filter_by(transaccion='egreso').filter_by(categoria='servicios').scalar() 
+
+    lista_egresos = [egreso_vivienda, egreso_deudas, egreso_servicios, egreso_supermercado, egreso_movilidad, egreso_entretenimiento]
+
+    porcentaje = []
+    for egreso in lista_egresos: 
+        if egreso == None: 
+            egreso = 0
+        porcentaje.append(egreso/egreso_total*100)
+
+    print (porcentaje)
+    return porcentaje
+
+
 
 # probando@dani-datos.iam.gserviceaccount.com
 def generar_grafico(telefono):
