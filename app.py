@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from sqlalchemy import func
+import random
 
 
 app = Flask(__name__)
@@ -51,6 +52,14 @@ def calcular_saldo(telefono):
 
     return saldo
 
+def frase_random(): 
+
+    frases = [' Apuntá tus gastos fijos.','ahorra al menos el 10%.','Atende en la diferencia entre necesidad y deseo.','Compará precios.','Aprendé a invertir.']
+    # frases_enlhet = ['epquen lhep apquelmaylha','enengqueneclha atquetsec 10','elano ac temaclha alpalhquem malhca ayaymommalhca tan apqueltamoc lha','elano lha cavam','eltamsap ac temaclha nenyausayc lha']
+    
+    return random.choice(frases)
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -71,7 +80,7 @@ def login():
             # print(pass_correcta)
             if pass_correcta == password:
                 print('Password correcta, Bienvenid@')
-                return redirect(url_for('pagina_principal', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono)))
+                return redirect(url_for('pagina_principal', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono), frase=frase_random()))
             else:
                 print('La pasword es incorrecta. ')
 
@@ -97,7 +106,7 @@ def sign_up():
                 usuario = Users(nombre, telefono, password)
                 db.session.add(usuario)
                 db.session.commit()
-                return redirect(url_for('pagina_principal', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono)))
+                return redirect(url_for('pagina_principal', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono), frase=frase_random()))
         else:
             print('Ya existe un dato con ese usuario ')
 
@@ -128,12 +137,12 @@ def ingresar_datos():
             transaccion = Transactions(opcion, monto, categoria, telefono)
             db.session.add(transaccion)
             db.session.commit()
-            return redirect(url_for('pagina_principal', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono)))
+            return redirect(url_for('pagina_principal', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono), frase=frase_random()))
         elif (opcion == 'egreso') and (categoria in categorias_validas_egreso):
             transaccion = Transactions(opcion, monto, categoria, telefono)
             db.session.add(transaccion)
             db.session.commit()
-            return redirect(url_for('pagina_principal', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono)))
+            return redirect(url_for('pagina_principal', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono), frase=frase_random()))
         else:
             print('La transaccion no corresponde con la categoria. ')
 
@@ -153,18 +162,16 @@ def pagina_principal():
     print('Los argumentos de la pagina son', nombre, telefono)
     print('El saldo es ', calcular_saldo(telefono))
 
-    generar_grafico(telefono)
+    generar_grafico(telefono) # Generamos el grafico de egresos
 
-    return render_template('pagina_principal.html', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono))
+    return render_template('pagina_principal.html', nombre=nombre, telefono=telefono, saldo=calcular_saldo(telefono), frase=frase_random())
 
 @app.route("/")
 def index():
     return render_template('inicio.html')
 
-@app.route("/balance")
-def balance():
-    args = request.args
-    telefono = args['telefono']
+@app.route("/balance/<telefono>")
+def balance(telefono):
 
     transacciones =  db.session.query(Transactions).filter_by(telefono=telefono).all()
     lista_de_transacciones = [] 
@@ -184,23 +191,73 @@ def balance():
 
 @app.route("/aprender")
 def aprender():
-    return render_template('aprender.html')
+    args = request.args
+    try:
+        nombre = args['nombre']
+        telefono = args['telefono']
+        saldo = args['saldo']
+    except:
+        print('No iniciaste sesion')
+        nombre = None
+        telefono = None
+        return redirect(url_for('login'))
+    return render_template('aprender.html', nombre=nombre, telefono=telefono, saldo=saldo)
 
 @app.route("/inicio")
 def inicio():
-    return render_template('inicio.html')
+    args = request.args
+    try:
+        nombre = args['nombre']
+        telefono = args['telefono']
+        saldo = args['saldo']
+    except:
+        print('No iniciaste sesion')
+        nombre = None
+        telefono = None
+        return redirect(url_for('login'))
+    return render_template('inicio.html', nombre=nombre, telefono=telefono, saldo=saldo)
 
 @app.route("/quienes_somos")
 def quienes_somos():
-    return render_template('quienes_somos.html')
+    args = request.args
+    try:
+        nombre = args['nombre']
+        telefono = args['telefono']
+        saldo = args['saldo']
+    except:
+        print('No iniciaste sesion')
+        nombre = None
+        telefono = None
+        return redirect(url_for('login'))
+    return render_template('quienes_somos.html', nombre=nombre, telefono=telefono, saldo=saldo)
 
 @app.route("/perfil")
 def perfil():
-    return render_template('perfil.html')
+    args = request.args
+    try:
+        nombre = args['nombre']
+        telefono = args['telefono']
+        saldo = args['saldo']
+    except:
+        print('No iniciaste sesion')
+        nombre = None
+        telefono = None
+        return redirect(url_for('login'))
+    return render_template('perfil.html', nombre=nombre, telefono=telefono, saldo=saldo)
 
 @app.route("/galeria")
 def galeria():
-    return render_template('galeria.html')
+    args = request.args
+    try:
+        nombre = args['nombre']
+        telefono = args['telefono']
+        saldo = args['saldo']
+    except:
+        print('No iniciaste sesion')
+        nombre = None
+        telefono = None
+        return redirect(url_for('login'))
+    return render_template('galeria.html', nombre=nombre, telefono=telefono, saldo=saldo)
 
 def generar_porcentajes(telefono): 
     egreso_total = db.session.query(func.sum(Transactions.monto)).filter_by(telefono=telefono).filter_by(transaccion='egreso').scalar() 
@@ -221,9 +278,10 @@ def generar_porcentajes(telefono):
 
     porcentaje = []
     for egreso in lista_egresos: 
-        if egreso == None: 
-            egreso = 0
-        porcentaje.append(egreso/egreso_total*100)
+        if egreso != None: 
+            porcentaje.append(egreso/egreso_total*100)
+        else: 
+            porcentaje.append(0)
 
     print (porcentaje)
     return porcentaje
@@ -273,4 +331,4 @@ def generar_grafico(telefono):
 
 if __name__ == "__main__":
     db.create_all()
-    app.run(debug = True)
+    app.run(debug = True, port=8080)
