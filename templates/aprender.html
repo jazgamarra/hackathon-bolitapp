@@ -17,11 +17,17 @@
     <div class="w-[600px] py-12 px-4 overflow-hidden">
       <p class="text-3xl font-bold text-orange-700">¡Aprendé a usar la app!</p>
       <p class="text-xl">
-            En este video te enseñamos paso a paso cómo sacarle el mayor provecho a BolitApp, un espacio virtual pensado 
-            especialmente para que mejores tus finanzas sin que tu lenguaje no sea una barrera. 
+        En este video te enseñamos paso a paso cómo sacarle el mayor provecho a
+        BolitApp, un espacio virtual pensado especialmente para que mejores tus
+        finanzas sin que tu lenguaje no sea una barrera.
       </p>
     </div>
   </div>
 
   {% endblock %}
+  <script>
+    let myFunction = () => {
+      location.href = '{{ url_for("aprender_enlhet") }}';
+    };
+  </script>
 </body>

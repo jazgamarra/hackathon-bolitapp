@@ -84,5 +84,10 @@
     </div>
 
     {% include 'partials/footer.html' %}
+    <script>
+      let myFunction = () => {
+        location.href = '{{ url_for("registro_enlhet") }}';
+      };
+    </script>
   </body>
 </html>

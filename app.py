@@ -245,6 +245,24 @@ def perfil():
         return redirect(url_for('login'))
     return render_template('perfil.html', nombre=nombre, telefono=telefono, saldo=saldo)
 
+
+''' Ruta Enlhet '''
+@app.route("/inicio_enlhet")
+def inicio_enlhet():
+    return render_template('templates2/Inicio_Idioma_2.html')
+
+@app.route("/registro_enlhet")
+def registro_enlhet():
+    return render_template('templates2/Sing_Up_Idioma_2.html')
+
+@app.route("/somos_enlhet")
+def somos_enlhet():
+    return render_template('templates2/Quienes_Somos_Idioma_2.html')
+
+@app.route("/aprender_enlhet")
+def aprender_enlhet():
+    return render_template('templates2/Aprender_Idioma_2.html')
+
 @app.route("/galeria")
 def galeria():
     args = request.args

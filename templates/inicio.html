@@ -100,5 +100,10 @@
       </section>
 
     {% include 'partials/footer.html' %}
+    <script>
+      let myFunction = () => {
+        location.href = '{{ url_for("inicio_enlhet") }}';
+      };
+    </script>
   </body>
 </html>
