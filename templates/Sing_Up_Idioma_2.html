@@ -57,8 +57,8 @@
                 <select
                   class="text-white text-center text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 appearance-none bg-amber-600 hover:bg-amber-500 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                 >
-                <option><a href="{{url_for('Sign_Up_Idioma_2')}}"> Espanhol</a></option>
-                <option><a href="{{url_for('sign_up')}}"> Enlhet</a></option>
+                  <option><a href="{{url_for('Sign_Up_Idioma_2')}}"> Espanhol</a></option>
+                  <option><a href="{{url_for('sign_up')}}"> Enlhet</a></option>
                 </select>
                 <div
                   class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
@@ -89,14 +89,15 @@
         <div
           class="bg-white px-6 py-8 rounded shadow-md text-orange-700 w-full bg-yellow-50"
         >
-          <h1 class="mb-8 text-3xl text-center">Crear cuenta</h1>
+          <h1 class="mb-8 text-3xl text-center">Elana cuenta pac</h1>
+          <!-- Crear cuenta -->
           <form action="" method="post">
             <input
               type="text"
               class="block border border-grey-light w-full p-3 rounded-full mb-4"
               name="nombre"
               id="nombre"
-              placeholder="Nombre"
+              placeholder="Apuesey"
             />
 
             <input
@@ -112,25 +113,26 @@
               class="block border border-grey-light w-full p-3 rounded-full mb-4"
               name="password"
               id="password"
-              placeholder="contraseña"
+              placeholder="nemposcama"
             />
             <input
               type="password"
               class="block border border-grey-light w-full p-3 rounded-full mb-4"
               name="confirmacion"
               id="confirmacion"
-              placeholder="Confirmar contraseña"
+              placeholder="Acyaseng nemposcama"
             />
 
             <button
               type="submit"
               class="w-full text-center py-3 rounded-full text-white my-1 bg-orange-700 hover:bg-orange-500 active:bg-orange-600"
             >
-              Crear
+              Elana
+              <!-- crear -->
             </button>
           </form>
           <div class="text-center text-sm text-grey-dark mt-4">
-            2022 tatu bolita app todos los derechos reservados.
+            2022 bolitapp todos los derechos reservados.
             <a
               class="no-underline border-b border-grey-dark text-grey-dark"
               href="#"
@@ -145,22 +147,17 @@
         </div>
 
         <div class="text-grey-dark mt-6">
-          Ya tienes una cuenta?
+          Elana yauaclho?<!-- ya tenes cuenta? -->
           <a
             class="no-underline border-b hover:text-orange-600"
             href="{{url_for('login')}}"
           >
-            ingresar </a
+            Etelh </a
           >.
         </div>
       </div>
     </div>
 
     {% include 'partials/footer.html' %}
-    <script>
-      let myFunction = () => {
-        location.href = '{{ url_for("registro_enlhet") }}';
-      };
-    </script>
   </body>
 </html>

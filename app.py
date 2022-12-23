@@ -347,6 +347,18 @@ def generar_grafico(telefono):
     for i in range(len(porcentajes)):
         subir_a_sheets(categorias_validas_egreso[i], porcentajes[i])
 
+@app.route('/Inicio_Idioma_2')
+def Inicio_Idioma_2():
+    return render_template('Inicio_Idioma_2.html')
+
+@app.route('/Quienes_Somos_Idioma_2')
+def Quienes_Somos_Idioma_2():
+    return render_template('Quienes_Somos_Idioma_2.html')
+
+@app.route('/Sign_Up_Idioma_2')
+def Sign_Up_Idioma_2():
+    return render_template('Sign_Up_Idioma_2.html')
+
 if __name__ == "__main__":
     db.create_all()
     app.run(debug = True, port=8080)
